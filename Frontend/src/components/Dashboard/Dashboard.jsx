@@ -2,7 +2,6 @@ import styles from "../Common/Dashboard.module.scss";
 import Income from "./Charts/Income";
 import Header from "../Common/Header";
 import { Icon } from "@iconify/react";
-
 import { GoPlus } from "react-icons/go";
 
 const Dashboard = ({ name }) => {

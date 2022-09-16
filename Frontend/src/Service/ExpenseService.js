@@ -69,6 +69,3 @@ const categories = () => {
 };
 
 export { expense, show, todayExpense, yesterdayExpense, categories };
-
-//const t =  {name : lucifer ,age :24}
-// t["name"] , t.name
