@@ -1,4 +1,4 @@
-const data = [10, 20, 30, 40];
+const data = [10];
 
 const cat = ["Bill", "Food", "Transport", "Other"];
 

@@ -1,11 +1,12 @@
 import styles from "./Analytics.module.scss";
-import Line from "./Charts/Line";
+// import Columns from "./Charts/Columns";
 import { WiStars } from "react-icons/wi";
-import Pie from "../Analytics/Charts/Pie";
+// import Pie from "../Analytics/Charts/Pie";
 import Header from "../Common/Header";
-import { useState, useEffect } from "react";
-import { categories } from "../../Service/ExpenseService";
-import { data, cat } from "../../Service/data";
+// import { categories } from "../../Service/ExpenseService";
+// import { data, cat } from "../../Service/data";
+import React, { useEffect, useState } from "react";
+import BarChart from "./Charts/BarChart";
 
 const Statistics = ({ sum, percentage, title }) => {
   return (
@@ -24,14 +25,44 @@ const Statistics = ({ sum, percentage, title }) => {
 };
 
 const Analytics = () => {
+  const [edit, setEdit] = useState(false);
+
   return (
     <main>
       <Header message="Average Expenses" ficon={<WiStars />} />
       <div className={styles.title}>
-        <h2>Pie Chart</h2>
+        <h2>Bar Chart</h2>
+      </div>
+      <div
+        class="btn-group"
+        role="group"
+        aria-label="Button group with nested dropdown"
+      >
+        <div class="btn-group" role="group">
+          <button
+            type="button"
+            class="btn btn-primary dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Select Chart
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="#">
+                Dropdown link
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">
+                Dropdown link
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
       <div className={styles.pie}>
-        <Pie data={data} cat={cat} />
+        <BarChart />
       </div>
     </main>
   );

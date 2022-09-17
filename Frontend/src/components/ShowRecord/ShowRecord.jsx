@@ -8,14 +8,9 @@ import { useEffect, useState } from "react";
 
 const ShowRecord = () => {
   const [allExpense, setAllExpense] = useState([]);
-  const [data, setData] = useState([]);
-  const [cat, setCat] = useState([]);
-
-  const [expenses, setExpenses] = useState([]);
 
   useEffect(() => {
     show(setAllExpense);
-    categories(setData, setCat);
   }, []);
 
   return (
@@ -24,12 +19,10 @@ const ShowRecord = () => {
         message="Display Tranx Record"
         ficon={<Icon icon="fontisto:eye" />}
       />
+      {}
       <div className={styles.box}>
         <div className="row ">
           <div className="col-4">
-            {expenses}
-            {/* {load()} */}
-            {console.log(data, cat)}
             <Button
               colour={0}
               url={"/dashBoard"}

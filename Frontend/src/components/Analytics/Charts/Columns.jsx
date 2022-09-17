@@ -1,21 +1,13 @@
 import ReactApexChart from "react-apexcharts";
 import styles from "./Columns.module.scss";
-// import { categories } from "../../../Service/ExpenseService";
-import { useEffect, useRef, useState } from "react";
 
 const Columns = ({ data, categories }) => {
-  const [isEdit, setIsEdit] = useState();
-  const refTest = useRef();
-
-  useEffect(() => {
-    console.log("hi", refTest.current);
-  }, [refTest.current]);
   const chartData = {
-    series: [{ data }],
+    series: data,
     options: {
       chart: {
         toolbar: {
-          show: true,
+          show: false,
         },
         events: {
           click: (event, chartContext, config) => {
@@ -76,7 +68,6 @@ const Columns = ({ data, categories }) => {
           type="bar"
           height="100%"
           width="100%"
-          ref={refTest}
         />
       </div>
     </div>

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { data } from "./data";
 import * as http from "./httpService";
 
@@ -25,8 +26,6 @@ const show = (setYesterday) => {
     });
 };
 
-// const cat = [];
-
 const todayExpense = (setToday) => {
   http
     .get("/show/today")
@@ -53,14 +52,12 @@ const yesterdayExpense = (setYesterday) => {
     });
 };
 
-const categories = () => {
+const categories = (setYesterday) => {
   http
     .get("/show/categories")
     .then((response) => {
-      if (response.data["success"]) {
-        const { categories, price } = response.data["result"];
-        console.log(categories, price, 55);
-        return { categories, price };
+      if (response.data["status"] == "success") {
+        setYesterday(response.data["result"]);
       }
     })
     .catch((error) => {

@@ -131,17 +131,15 @@ app.get("/api/show/categories", (req, res) => {
             result["error"] = "category name dosen't exist";
           } else {
             result["status"] = "success";
-
-            console.log(data);
             const cat = [];
             const price = [];
             data.map((item, key) => {
-              // console.log(item.cat_name, item.price, " ", key);
               cat.push(item.cat_name);
               price.push(item.price);
             });
-            console.log(cat, price);
+
             result["result"] = { categories: cat, price: price };
+            console.log(result);
           }
         }
         res.send(result);
