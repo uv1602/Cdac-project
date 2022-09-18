@@ -16,7 +16,6 @@ const Button = ({
   }
   return (
     <a href={url}>
-      {console.log(type)}
       <button
         className={name}
         type={type}

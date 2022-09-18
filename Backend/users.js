@@ -10,7 +10,7 @@ app.post("/api/login", (request, response) => {
   const { email, password } = request.body;
   const encryptedPassword = "" + crypto.SHA256(password);
   console.log(email, encryptedPassword);
-  const statement = `select uid,fname,lname from user where email="${email}" and password='${encryptedPassword}';`;
+  const statement = `select uid,fname,lname,dob,gender,email from user where email="${email}" and password='${encryptedPassword}';`;
   try {
     db.execute(statement, (err, data) => {
       // console.log(data, " ", err);

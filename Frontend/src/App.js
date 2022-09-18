@@ -14,7 +14,6 @@ import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Logout from "./components/Logout/Logout";
 import { getCurrentAuthUser, isLoginStatus } from "./Service/AuthUserDetail";
-
 import Profile from "./components/MyProfile/EditProfile";
 
 const App = () => {
