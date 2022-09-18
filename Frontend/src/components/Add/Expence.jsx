@@ -42,7 +42,7 @@ const Add = () => {
         <Button colour={1} url={"/show"} body="Show Record" />
       </div>
       <div className={styles.box}>
-        {msg != 0 && <Message />}
+        {msg !== 0 && <Message />}
         <form onSubmit={handleSubmit}>
           <Input
             label="Date"

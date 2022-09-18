@@ -13,12 +13,11 @@ import { Icon } from "@iconify/react";
 import {
   MdOutlineDashboard,
   MdOutlineAnalytics,
-  MdOutlinedFlag,
   MdPeopleOutline,
   MdOutlineMessage,
   MdOutlineLogout,
 } from "react-icons/md";
-import { FaReact, FaTimes } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 import { BsThreeDots } from "react-icons/bs";
 import { VscDashboard } from "react-icons/vsc";
 

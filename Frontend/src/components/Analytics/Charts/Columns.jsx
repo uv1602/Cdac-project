@@ -1,9 +1,14 @@
 import ReactApexChart from "react-apexcharts";
 import styles from "./Columns.module.scss";
+import React, { useEffect, useState } from "react";
 
 const Columns = ({ data, categories }) => {
+  const [bar, setBar] = useState([]);
+  useEffect(() => {
+    categories(setBar);
+  }, []);
   const chartData = {
-    series: data,
+    series: bar.price,
     options: {
       chart: {
         toolbar: {
@@ -32,7 +37,7 @@ const Columns = ({ data, categories }) => {
         show: false,
       },
       xaxis: {
-        categories: categories,
+        categories: bar.categories,
         labels: {
           style: {
             fontSize: "12px",

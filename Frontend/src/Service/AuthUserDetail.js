@@ -1,35 +1,22 @@
 import Logout from "../components/Logout/Logout";
 import jwt from "jwt-decode";
 
-const getCurrentAuthUser = () => {
+const getCurrentAuthUser = (setUser) => {
   try {
     const token = localStorage.getItem("token");
     const user = jwt(token);
-    console.log(user);
-    return user;
+    setUser(user);
   } catch (error) {
     <Logout />;
   }
 };
 
-const isLogin = () => {
+const isLoginStatus = (SetIsLogin) => {
   if (localStorage.getItem("token")) {
-    return true;
+    SetIsLogin(true);
   } else {
-    return false;
+    SetIsLogin(false);
   }
 };
 
-const getCurrentAuthUserName = () => {
-  try {
-    if (isLogin) {
-      console.log(getCurrentAuthUser().fname);
-      return getCurrentAuthUser().fname;
-      // console.log(name);
-    }
-  } catch (error) {
-    return "";
-  }
-};
-
-export { getCurrentAuthUser, isLogin, getCurrentAuthUserName };
+export { getCurrentAuthUser, isLoginStatus };

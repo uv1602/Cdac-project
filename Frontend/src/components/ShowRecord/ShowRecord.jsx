@@ -3,7 +3,7 @@ import Record from "../Common/Record";
 import { Icon } from "@iconify/react";
 import Button from "../Common/Button";
 import styles from "../Common/Dashboard.module.scss";
-import { show, categories } from "../../Service/ExpenseService";
+import { show } from "../../Service/ExpenseService";
 import { useEffect, useState } from "react";
 
 const ShowRecord = () => {
@@ -43,7 +43,7 @@ const ShowRecord = () => {
         </div>
       </div>
       <div className={styles.box}>
-        {allExpense.length == 0 ? (
+        {allExpense.length === 0 ? (
           <Record />
         ) : (
           allExpense.map((t, key) => {

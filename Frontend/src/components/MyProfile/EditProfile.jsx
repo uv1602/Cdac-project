@@ -21,6 +21,7 @@ const Card = ({ person_image }) => {
           <Label title={"First Name"} value={profile.fname} fname="fname" />
           <Label title={"Last Name"} value={profile.lname} fname="lname" />
           <Label title={"Gender"} value={profile.gender} fname="gender" />
+          <Label title={"Mail "} value={profile.email} fname="email" />
         </tbody>
       </table>
     </div>

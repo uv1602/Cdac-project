@@ -1,5 +1,4 @@
 //STYLES
-import Button from "../Common/Button";
 import Input from "../Common/Input";
 import styles from "./Login.module.scss";
 import login from "../../Service/LoginService";
@@ -16,7 +15,7 @@ const Signup = () => {
     var result;
     try {
       result = await login(email.value, password.value);
-      if (result.data.status == "success") {
+      if (result.data.status === "success") {
         localStorage.setItem("token", result.data.token);
         window.location.assign("/");
       } else {

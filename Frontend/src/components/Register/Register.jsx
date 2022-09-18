@@ -1,11 +1,7 @@
 //STYLES
 import register from "../../Service/RegisterService";
-import Button from "../Common/Button";
 import Input from "../Common/Input";
-import Radio from "../Common/Radio";
 import styles from "./Register.module.scss";
-import { useState } from "react";
-
 import People1 from "../../pics/people1.jpg";
 
 const Signup = () => {
@@ -13,7 +9,7 @@ const Signup = () => {
     event.preventDefault();
     const { fname, lname, email, password, dob, cpassword, gender } =
       event.target;
-    if (cpassword.value == password.value) {
+    if (cpassword.value === password.value) {
       register({
         email: email.value,
         password: password.value,
@@ -45,7 +41,6 @@ const Signup = () => {
           <Input placeholder="Enter Your Email" name="email" type="email" />
           <Input placeholder="Enter Your Password" name="password" />
           <Input placeholder="Enter Your Confirm Password" name="cpassword" />
-
           <Input
             placeholder="Enter Your Date of birth"
             type="date"

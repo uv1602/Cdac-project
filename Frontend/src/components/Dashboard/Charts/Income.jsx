@@ -23,11 +23,10 @@ const Income = () => {
       <div className={styles.today}>
         <h3 className={styles.activity_day}>Today</h3>
         <div className={styles.activities}>
-          {today.length == 0 ? (
+          {today.length === 0 ? (
             <Record />
           ) : (
             today.map((t, key) => {
-              console.log(key);
               return (
                 <div className={key}>
                   <Record income={t.amount} content={t.cat_name} />
@@ -40,11 +39,10 @@ const Income = () => {
       <div className={styles.yesterday}>
         <h3 className={styles.activity_day}>Yesterday</h3>
         <div className={styles.activities}>
-          {yesterday.length == 0 ? (
+          {yesterday.length === 0 ? (
             <Record />
           ) : (
             yesterday.map((t, key) => {
-              console.log(key);
               return (
                 <div className={key}>
                   <Record income={t.amount} content={t.cat_name} />

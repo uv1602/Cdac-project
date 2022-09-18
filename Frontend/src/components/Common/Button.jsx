@@ -9,7 +9,7 @@ const Button = ({
   handleSubmit,
 }) => {
   let name;
-  if (colour == 0) {
+  if (colour === 0) {
     name = "btn btn-primary ";
   } else {
     name = "float-end btn btn-success";

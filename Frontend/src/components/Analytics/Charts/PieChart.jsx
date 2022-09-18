@@ -1,21 +1,16 @@
+// ./components/PieChart.js
+
+import Chart from "chart.js/auto";
+import { Pie } from "react-chartjs-2";
 import React from "react";
-import {
-  Chart as ChartJS,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-} from "chart.js";
-import { Bar } from "react-chartjs-2";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement);
-
-const BarChart = ({ bar }) => {
-  var d = {
-    labels: bar.categories,
+const PieChart = ({ pie }) => {
+  const labels = pie.categories;
+  const data = {
+    labels: labels,
     datasets: [
       {
-        label: "Expenses",
-        data: bar.price,
+        label: "My First dataset",
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
@@ -32,15 +27,18 @@ const BarChart = ({ bar }) => {
           "rgba(153, 102, 255, 1)",
           "rgba(255, 159, 64, 1)",
         ],
-        borderWidth: 1,
+
+        data: pie.price,
       },
     ],
   };
+
   var options = {
     maintainAspectRatio: false,
+    responsive: true,
     scales: {
       y: {
-        beginAtZero: true,
+        beginAtZero: false,
       },
     },
     legend: {
@@ -51,8 +49,8 @@ const BarChart = ({ bar }) => {
   };
   return (
     <div>
-      <Bar data={d} options={options} height={400} />
+      <Pie data={data} options={options} />
     </div>
   );
 };
-export default BarChart;
+export default PieChart;

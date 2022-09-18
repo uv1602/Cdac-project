@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { data } from "./data";
 import * as http from "./httpService";
 
 const expense = (expense) => {
@@ -17,7 +15,7 @@ const show = (setYesterday) => {
   http
     .get("/show")
     .then((response) => {
-      if (response.data["status"] == "success") {
+      if (response.data["status"] === "success") {
         setYesterday(response.data["result"]);
       }
     })
@@ -30,7 +28,7 @@ const todayExpense = (setToday) => {
   http
     .get("/show/today")
     .then((response) => {
-      if (response.data["status"] == "success") {
+      if (response.data["status"] === "success") {
         setToday(response.data["result"]);
       }
     })
@@ -43,7 +41,7 @@ const yesterdayExpense = (setYesterday) => {
   http
     .get("/show/yesterday")
     .then((response) => {
-      if (response.data["status"] == "success") {
+      if (response.data["status"] === "success") {
         setYesterday(response.data["result"]);
       }
     })
@@ -56,7 +54,7 @@ const categories = (setYesterday) => {
   http
     .get("/show/categories")
     .then((response) => {
-      if (response.data["status"] == "success") {
+      if (response.data["status"] === "success") {
         setYesterday(response.data["result"]);
       }
     })

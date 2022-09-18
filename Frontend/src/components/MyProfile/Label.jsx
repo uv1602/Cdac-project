@@ -1,9 +1,8 @@
 //STYLES
-import styles from "./MyProfile.module.scss";
+// import styles from "./MyProfile.module.scss";
 import Input from "../Common/Input";
 import Button from "../Common/Button";
 import { useState } from "react";
-import { profile } from "../../Service/Profile";
 
 const Label = ({ title, value, fname, placeholder, type }) => {
   const [isEdit, setIsEdit] = useState(false);
