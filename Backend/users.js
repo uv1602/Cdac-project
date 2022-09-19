@@ -60,7 +60,6 @@ app.post("/api/register", (request, response) => {
           fname: fname,
           lname: lname,
           email: email,
-          password: password,
         };
         const token = jwt.sign(user, process.env.SECRET);
         result["status"] = "success";
@@ -68,6 +67,44 @@ app.post("/api/register", (request, response) => {
         console.log("New user added");
       }
       response.send(result);
+    });
+  } catch (ex) {
+    console.log(ex);
+  }
+});
+
+app.patch("/api/profile", (req, res) => {
+   const uid = req.userID;
+  const { fname, lname, email, dob, gender } = req.body;
+  const statement = `update user set fname="${fname}", lname="${lname}", email="${email}" , dob="${dob}", gender="${gender}" where uid=${uid};`;
+  try {
+    db.execute(statement, (error, data) => {
+      const result = {
+        status: "",
+      };
+
+      if (error != null) {
+        // there is an error while performing the operation
+        result["status"] = "error";
+        result["error"] = "Invalid credentials!!";
+        res.status(400);
+      } else {
+        // there is no error
+        const user = {
+          fname: fname,
+          lname: lname,
+          email: email,
+          dob: dob,
+          gender: gender,
+          uid: uid
+        };
+        const token = jwt.sign(user, process.env.SECRET);
+        result["status"] = "success";
+        result["token"] = token;
+        console.log("User updated");
+        console.log(token);
+      }
+      res.send(result);
     });
   } catch (ex) {
     console.log(ex);

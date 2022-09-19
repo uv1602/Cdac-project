@@ -17,7 +17,7 @@ const Input = (props) => {
           placeholder={placeholder}
           value={value}
           onClick={handleClick}
-          required
+          // required
         />
       )}
       {radio}

@@ -11,4 +11,8 @@ const post = (url, data) => {
   return axios.post(url, data);
 };
 
-export { get, post };
+const patch = (url, data) =>{
+  return axios.patch(url, data);
+}
+
+export { get, post, patch };

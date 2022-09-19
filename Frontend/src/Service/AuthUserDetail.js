@@ -24,4 +24,8 @@ const setLogin = (token) => {
   window.location.assign("/login");
 };
 
-export { getCurrentAuthUser, isLoginStatus, setLogin };
+const updateAuthUser =(editedUser)=>{
+  console.log(editedUser);
+};
+
+export { getCurrentAuthUser, isLoginStatus, setLogin, updateAuthUser };
