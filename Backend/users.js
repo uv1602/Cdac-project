@@ -27,6 +27,7 @@ app.post("/api/login", (request, response) => {
           const token = jwt.sign(user, process.env.SECRET);
           result["status"] = "success";
           result["token"] = token;
+          console.log(user);
         }
       }
       response.send(result);

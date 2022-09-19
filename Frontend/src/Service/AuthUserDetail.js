@@ -19,4 +19,9 @@ const isLoginStatus = (SetIsLogin) => {
   }
 };
 
-export { getCurrentAuthUser, isLoginStatus };
+const setLogin = (token) => {
+  localStorage.setItem("token", token);
+  window.location.assign("/login");
+};
+
+export { getCurrentAuthUser, isLoginStatus, setLogin };

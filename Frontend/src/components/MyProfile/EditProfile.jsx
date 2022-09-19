@@ -2,44 +2,107 @@ import style from "../Common/Dashboard.module.scss";
 import styles from "../Team/Team.module.scss";
 import People1 from "../../pics/people1.jpg";
 import Label from "./Label";
+import FormElement from "./FormElement";
+import { useState, useEffect } from "react";
 import Button from "../Common/Button";
-import { useState } from "react";
-
-
 
 const Card = ({ person_image, user }) => {
-    
+  const [isEdit, setIsEdit] = useState(true);
+  const [content, setContent] = useState("");
+  const [fname, setFname] = useState(true);
+  const [fvalue, setFvalue] = useState();
+
+  useEffect((e) => {}, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { fname } = e.target;
+    console.log(fname.value);
+  };
   return (
     <div>
       <div className={styles.info}>
         <div className={styles.photo_container}>
           <img src={person_image} alt="person" />
         </div>
-        <span className={styles.name}>
-          {user.fname + " " + user.lname}
-        </span>
+        <span className={styles.name}>{user.fname + " " + user.lname}</span>
       </div>
-      <table className="table table-hover table-striped ">
-        <form></form>
-        <tbody>
-          <Label title={"First Name"} value={user.fname}  />
-          <Label title={"Last Name"} value={user.lname}  />
-          <Label title={"Gender"} value={user.gender}  />
-          <Label title={"Mail "} value={user.email}  />
-          <Label title={"Date of Birth"} value={user.dob} />
-        </tbody>
-      </table>
+      {isEdit && (
+        <table className="table table-hover table-striped ">
+          <tbody>
+            <Label title={"First Name"} value={user.fname} />
+            <Label title={"Last Name"} value={user.lname} />
+            <Label title={"Gender"} value={user.gender} />
+            <Label title={"Mail "} value={user.email} />
+            <Label title={"Date of Birth"} value={user.dob} />
+          </tbody>
+          <Button
+            colour={0}
+            body="Edit Profile"
+            handleClick={() => {
+              setIsEdit(!isEdit);
+            }}
+          />
+        </table>
+      )}
+      {!isEdit && (
+        <form onSubmit={handleSubmit}>
+          <table className="table table-hover table-striped ">
+            <tbody>
+              <FormElement
+                title={"First name"}
+                placeholder={user.fname}
+                name={"fname"}
+              />
+              <FormElement
+                title={"Last Name"}
+                placeholder={user.lname}
+                name={"lname"}
+              />
+              <FormElement
+                title={"Gender"}
+                placeholder={user.gender}
+                name={"gender"}
+              />
+              <FormElement
+                title={"Date of Birth"}
+                placeholder={user.dob}
+                name={"dob"}
+              />
+              <FormElement
+                title={"Mail"}
+                placeholder={user.email}
+                name={"mail"}
+              />
+            </tbody>
+          </table>
+          <Button
+            colour={1}
+            body="Back"
+            type={"button"}
+            handleClick={() => {
+              setIsEdit(!isEdit);
+            }}
+          />
+          <Button
+            colour={0}
+            body="Submit"
+            type={"submit"}
+            handleClick={() => {
+              setIsEdit(!isEdit);
+            }}
+          />
+        </form>
+      )}
     </div>
   );
 };
 
-const Profile = ({user}) => {
-  const [isEdit, setIsEdit] = useState(false);
+const Profile = ({ user }) => {
   return (
     <main>
       <div className={style.box}>
-        <Card person_image={People1} user={user} value={isEdit} />
-        {console.log(user)}
+        <Card person_image={People1} user={user} />
       </div>
     </main>
   );

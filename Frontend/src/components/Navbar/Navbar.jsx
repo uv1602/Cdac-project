@@ -2,7 +2,7 @@
 import styles from "./Navbar.module.scss";
 
 //CONTEXT
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import NavContext from "../../Context/NavContext";
 
 //REACT ROUTER
@@ -20,9 +20,16 @@ import {
 import { FaTimes } from "react-icons/fa";
 import { BsThreeDots } from "react-icons/bs";
 import { VscDashboard } from "react-icons/vsc";
+import { isLoginStatus } from "../../Service/AuthUserDetail";
 
 const Navbar = () => {
   const { nav, setNav } = useContext(NavContext);
+
+  useEffect(() => {
+    if (Location.pathname !== "/login" && Location.pathname !== "/register") {
+      setNav(true);
+    }
+  }, [Location.pathname]);
 
   return (
     <div

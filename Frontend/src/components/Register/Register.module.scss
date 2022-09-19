@@ -1,4 +1,4 @@
-.loginbody{
+.registerbody{
     height: 100%;
     width: 100%;
     margin: 0;
@@ -11,7 +11,7 @@
     
 }
 
-.loginlogo{
+.registerlogo{
     border-radius: 3%;
     width: 30rem;
     height: fit-content;
@@ -26,8 +26,8 @@
 }
 
 .avatar{
-    height: 100px;
-    width: 100px;
+    height: 6rem;
+    width: 6rem;
     border-radius: 50%;
     position: absolute;
     top: -50px;
@@ -41,38 +41,38 @@ h1 {
     font-size: 22px;
 }
 
-.loginlogo input{
+.registerlogo input{
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: var(--height);
     border:none;
     border-bottom: 1px solid #fff;
     background: transparent;
     outline: none;
-    height: 48px;
+    height: 8vh;
     font-size: 16px;
 }
 
-.loginlogo input[type="submit"]
+.registerlogo input[type="submit"]
 {
     border: none;
     outline: none;
-    height: 40px;
+    height: 6vh;
     background: #fb2525;
     color: #fff;
     font-size: 18px;
     border-radius: 20px;
 }
 
-.loginlogo input[type="date"]
+.registerlogo input[type="date"]
 {
-    height: 40px;
+    height: 4vh;
     border-bottom: 1px solid #fff;
     color: fff;
     background: whitesmoke;
 
 }
 
-.loginlogo input[type="submit"]:hover
+.registerlogo input[type="submit"]:hover
 {
     
     cursor: pointer;
@@ -81,8 +81,8 @@ h1 {
   
 }
 
-.loginlogo input[type="radio"]{
-    height:  20px;
+.registerlogo input[type="radio"]{
+    height:  2vh;
 }
 
     

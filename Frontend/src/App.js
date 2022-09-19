@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Container from "./components/Container/Container";
 import RightNavbar from "./components/RightNavbar/RightNavbar";
@@ -20,26 +20,31 @@ const App = () => {
   const [nav, setNav] = useState(false);
   const value = { nav, setNav };
   const [user, setUser] = useState({});
+  const [navbar, setNavBar] = useState("");
+  const [stickyNavBar, setStickyNavBar] = useState("");
   const [isLogin, SetIsLogin] = useState(false);
+
   useEffect(() => {
     if (!isLogin) {
       getCurrentAuthUser(setUser);
       isLoginStatus(SetIsLogin);
+    } else {
+      setStickyNavBar(
+        <RightNavbar name={user.fname + " " + user.lname} role="Administor" />
+      );
+      setNavBar(<Navbar />);
     }
   }, [isLogin]);
 
   return (
     <div className="App">
+      <Routes></Routes>
       <NavContext.Provider value={value}>
-        {window.location.pathname !== "/login" &&
-          window.location.pathname !== "/register" && <Navbar />}
+        {navbar}
+
         <Container
-          stickyNav={
-            <RightNavbar
-              name={user.fname + " " + user.lname}
-              role="Administor"
-            />
-          }
+          isLogin={isLogin}
+          stickyNav={stickyNavBar}
           content={
             <Routes>
               <React.Fragment>
@@ -72,9 +77,10 @@ const App = () => {
                     <Route path="/team" element={<Team />} />
                     <Route path="/show" element={<ShowRecord />} />
                     <Route path="/logout" element={<Logout />} />
+                    <Route path="*" element={<Navigate to="/" replace />} />
                   </>
                 ) : (
-                  <Route path="*" element={<main>PLease login</main>} />
+                  <Route path="*" element={<Navigate to="/login" replace />} />
                 )}
               </React.Fragment>
             </Routes>

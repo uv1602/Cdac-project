@@ -2,6 +2,7 @@
 import Input from "../Common/Input";
 import styles from "./Login.module.scss";
 import login from "../../Service/LoginService";
+import * as auth from "../../Service/AuthUserDetail";
 import { useState } from "react";
 import People1 from "../../pics/people1.jpg";
 
@@ -16,8 +17,7 @@ const Signup = () => {
     try {
       result = await login(email.value, password.value);
       if (result.data.status === "success") {
-        localStorage.setItem("token", result.data.token);
-        window.location.assign("/");
+        auth.setLogin(result.data.token);
       } else {
         console.log(result.data.error);
         seterror(result.data.error);

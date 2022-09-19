@@ -24,8 +24,8 @@ const Signup = () => {
   };
 
   return (
-    <div className={styles.loginbody}>
-      <div className={styles.loginlogo}>
+    <div className={styles.registerbody}>
+      <div className={styles.registerlogo}>
         <div>
           <img src={People1} alt="person" className={styles.avatar} />
         </div>
