@@ -5,24 +5,29 @@ import Label from "./Label";
 import FormElement from "./FormElement";
 import { useState, useEffect } from "react";
 import Button from "../Common/Button";
-import { updateAuthUser } from "../../Service/AuthUserDetail";
-
+import ProfileServices from "../../Service/ProfileServices";
+import { updateToken } from "../../Service/AuthUserDetail";
 
 const Card = ({ person_image, user }) => {
   const [isEdit, setIsEdit] = useState(true);
-
+  const [token, setToken] = useState("");
   useEffect((e) => {}, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const { fname, lname, gender, dob, email } = e.target;
-      updateAuthUser({
-        "fname" : (fname.value ? fname.value : user.fname),
-         "lname" : (lname.value ? lname.value : user.lname),
-         "gender" : (gender.value ? gender.value : user.gender),
-          "dob" : (dob.value ? dob.value : user.dob),
-          "email" : (email.value ? email.value : user.email),        
-      });
+    ProfileServices(
+      {
+        fname: fname.value ? fname.value : user.fname,
+        lname: lname.value ? lname.value : user.lname,
+        gender: gender.value ? gender.value : user.gender,
+        dob: dob.value ? dob.value : user.dob,
+        email: email.value ? email.value : user.email,
+      },
+      setToken
+    );
+    updateToken(token);
+    setIsEdit(() => setIsEdit(true));
   };
   return (
     <div>
@@ -32,6 +37,7 @@ const Card = ({ person_image, user }) => {
         </div>
         <span className={styles.name}>{user.fname + " " + user.lname}</span>
       </div>
+      {console.log(token)}
       {isEdit && (
         <table className="table table-hover table-striped ">
           <tbody>
@@ -89,12 +95,8 @@ const Card = ({ person_image, user }) => {
               setIsEdit(!isEdit);
             }}
           />
-          <Button
-            colour={0}
-            body="Submit"
-            type={"submit"}
-          />
-        </form> 
+          <Button colour={0} body="Submit" type={"submit"} />
+        </form>
       )}
     </div>
   );

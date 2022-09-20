@@ -24,8 +24,8 @@ const setLogin = (token) => {
   window.location.assign("/login");
 };
 
-const updateAuthUser =(editedUser)=>{
-  console.log(editedUser);
+const updateToken = (token) => {
+  localStorage.setItem("token", token);
 };
 
-export { getCurrentAuthUser, isLoginStatus, setLogin, updateAuthUser };
+export { getCurrentAuthUser, isLoginStatus, setLogin, updateToken };

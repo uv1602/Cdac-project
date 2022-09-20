@@ -43,7 +43,7 @@ const Signup = () => {
           <Input
             placeholder="Enter Your Password"
             name="password"
-            type="passwor"
+            type="password"
           />
           <input type="submit" value="Log In" />
           <span>

@@ -74,7 +74,7 @@ app.post("/api/register", (request, response) => {
 });
 
 app.patch("/api/profile", (req, res) => {
-   const uid = req.userID;
+  const uid = req.userID;
   const { fname, lname, email, dob, gender } = req.body;
   const statement = `update user set fname="${fname}", lname="${lname}", email="${email}" , dob="${dob}", gender="${gender}" where uid=${uid};`;
   try {
@@ -96,13 +96,12 @@ app.patch("/api/profile", (req, res) => {
           email: email,
           dob: dob,
           gender: gender,
-          uid: uid
+          uid: uid,
         };
         const token = jwt.sign(user, process.env.SECRET);
         result["status"] = "success";
         result["token"] = token;
         console.log("User updated");
-        console.log(token);
       }
       res.send(result);
     });
