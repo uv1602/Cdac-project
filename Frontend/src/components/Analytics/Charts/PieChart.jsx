@@ -1,6 +1,5 @@
 // ./components/PieChart.js
 
-import Chart from "chart.js/auto";
 import { Pie } from "react-chartjs-2";
 import React from "react";
 
@@ -49,7 +48,7 @@ const PieChart = ({ pie }) => {
   };
   return (
     <div>
-      <Pie data={data} options={options} />
+      <Pie data={data} options={options} style={{ height: "500px" }} />
     </div>
   );
 };

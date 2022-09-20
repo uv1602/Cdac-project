@@ -84,6 +84,11 @@ const Navbar = () => {
             description="Record"
           />
 
+          <NavUrl
+            url="admin"
+            icon={<Icon icon="fontisto:eye" />}
+            description="Admin"
+          />
           <NavUrl url="team" icon={<MdPeopleOutline />} description="Team" />
         </ul>
 
