@@ -15,6 +15,8 @@ import Register from "./components/Register/Register";
 import Logout from "./components/Logout/Logout";
 import { getCurrentAuthUser, isLoginStatus } from "./Service/AuthUserDetail";
 import Profile from "./components/MyProfile/EditProfile";
+import Admin from "./components/Admin/Admin";
+import EditUserDetails from "./components/Admin/EditUserDetails";
 
 const App = () => {
   const [nav, setNav] = useState(false);
@@ -57,31 +59,29 @@ const App = () => {
               </React.Fragment>
 
               <React.Fragment>
-                {isLogin ? (
-                  <>
-                    <Route
-                      path="/"
-                      element={
-                        <Dashboard name={user.fname + " " + user.lname} />
-                      }
-                    />
-                    <Route
-                      path="/dashboard"
-                      element={
-                        <Dashboard name={user.fname + " " + user.lname} />
-                      }
-                    />
-                    <Route path="/profile" element={<Profile user={user} />} />
-                    <Route path="/add" element={<Add />} />
-                    <Route path="/analytics" element={<Analytics />} />
-                    <Route path="/team" element={<Team />} />
-                    <Route path="/show" element={<ShowRecord />} />
-                    <Route path="/logout" element={<Logout />} />
-                    <Route path="*" element={<Navigate to="/" replace />} />
+                {/* {isLogin ? ( */}
+                {/* <> */}
+                <Route
+                  path="/"
+                  element={<Dashboard name={user.fname + " " + user.lname} />}
+                />
+                <Route
+                  path="/dashboard"
+                  element={<Dashboard name={user.fname + " " + user.lname} />}
+                />
+                <Route path="/profile" element={<Profile user={user} />} />
+                <Route path="/add" element={<Add />} />
+                <Route path="/analytics" element={<Analytics />} />
+                <Route path="/team" element={<Team />} />
+                <Route path="/show" element={<ShowRecord />} />
+                <Route path="/logout" element={<Logout />} />
+                <Route path="/admin" element={<Admin />} />
+                <Route path="/edit" element={<EditUserDetails />} />
+                {/* <Route path="*" element={<Navigate to="/" replace />} />
                   </>
                 ) : (
-                  <Route path="*" element={<Navigate to="/login" replace />} />
-                )}
+                  <Route path="*" element={<Navigate to="/login" replace />} /> */}
+                {/* )} */}
               </React.Fragment>
             </Routes>
           }

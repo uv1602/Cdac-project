@@ -3,13 +3,16 @@ import register from "../../Service/RegisterService";
 import Input from "../Common/Input";
 import styles from "./Register.module.scss";
 import People1 from "../../pics/people1.jpg";
+import React, { useState } from 'react';
 
 const Signup = () => {
+  const [error, setError]= useState('');
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const { fname, lname, email, password, dob, cpassword, gender } =
       event.target;
-    if (cpassword.value === password.value) {
+    if (cpassword.value === password.value && fname.value!=="" && lname.value!=="" && email.value!=="") {
       register({
         email: email.value,
         password: password.value,
@@ -19,7 +22,7 @@ const Signup = () => {
         gender: gender.value,
       });
     } else {
-      // setError("Password and confirm password should match");
+       setError("**Password and confirm password should match");
     }
   };
 
@@ -32,8 +35,7 @@ const Signup = () => {
 
         <h1>Register</h1>
         <div className="text-danger">
-          {/* <h6>{error}</h6>
-          <h5>{error}</h5> */}
+           {<p>{error}</p>}
         </div>
         <form onSubmit={handleSubmit} method="post">
           <Input placeholder="Enter Your First Name" name="fname" />
@@ -41,12 +43,11 @@ const Signup = () => {
           <Input placeholder="Enter Your Email" name="email" type="email" />
           <Input placeholder="Enter Your Password" name="password" />
           <Input placeholder="Enter Your Confirm Password" name="cpassword" />
-          <Input
-            placeholder="Enter Your Date of birth"
+          <input
             type="date"
             name="dob"
           />
-          <span>
+          <span style={{marginTop:"20px"}}>
             <p> Gender :</p>
             <input type="radio" value="Male" name="gender" /> Male
             <input type="radio" value="Female" name="gender" /> Female

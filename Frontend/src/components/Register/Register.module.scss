@@ -22,7 +22,7 @@
     left: 50% ;
     transform: translate(-50%,-50%); 
     box-sizing: border-box;  
-    padding: 70px 30px;
+    padding: 50px 40px;
 }
 
 .avatar{
@@ -39,6 +39,13 @@ h1 {
     padding: 0 0 20px;
     text-align: center;
     font-size: 22px;
+}
+
+p {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 16px;
 }
 
 .registerlogo input{
@@ -69,6 +76,7 @@ h1 {
     border-bottom: 1px solid #fff;
     color: fff;
     background: whitesmoke;
+    padding: 2%;
 
 }
 
@@ -84,6 +92,7 @@ h1 {
 .registerlogo input[type="radio"]{
     height:  2vh;
 }
+
 
     
 
