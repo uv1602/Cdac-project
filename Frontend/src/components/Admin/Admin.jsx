@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../Common/Header";
 import { Icon } from "@iconify/react";
 import styles from "./Admin.module.scss";
@@ -6,25 +6,16 @@ import UserDetails from "./UserDetails";
 import EditUserDetails from "./EditUserDetails";
 import userEvent from "@testing-library/user-event";
 // import EditUserDetails from './EditUserDetails';
+import { getNonVerfiedUser } from "../../Service/AdminService";
 
 const Admin = () => {
   const [userDeatils, setUserDeatils] = useState({});
-  const [listofUser, setListofUser] = useState([
-    {
-      fname: "Lucifer",
-      lname: "Vishwa",
-      email: "vish@gmail.com",
-      dob: "1997-08-12",
-      uid: 1,
-    },
-    {
-      fname: "vaish",
-      lname: "Vishwa",
-      email: "vish@gmail.com",
-      dob: "1998-08-12",
-      uid: 1,
-    },
-  ]);
+  const [listofUser, setListofUser] = useState([{}]);
+
+  useEffect(() => {
+    getNonVerfiedUser(setListofUser);
+  }, []);
+
   return (
     <main>
       <Header
@@ -49,14 +40,6 @@ const Admin = () => {
               {listofUser.map((user) => (
                 <UserDetails user={user} setUserDeatils={setUserDeatils} />
               ))}
-              {/* <UserDetails
-                fname="Lucifer"
-                lname="Vishwa"
-                email="vish@gmail.com"
-                dob="1997-08-12"
-                uid={2}
-                setUserDeatils={setUserDeatils}
-              /> */}
             </tbody>
           </table>
         </div>

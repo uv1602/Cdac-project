@@ -11,8 +11,12 @@ const post = (url, data) => {
   return axios.post(url, data);
 };
 
-const patch = (url, data) =>{
+const patch = (url, data) => {
   return axios.patch(url, data);
-}
+};
 
-export { get, post, patch };
+const remove = (url, data) => {
+  return axios.delete(url, data);
+};
+
+export { get, post, patch, remove };

@@ -55,6 +55,16 @@ const Card = ({ person_image, user, setUserDeatils }) => {
               placeholder={user.email}
               name={"email"}
             />
+            <FormElement
+              title={"Role"}
+              placeholder={user.role === 0 ? "User" : "Admin"}
+              name={"role"}
+            />
+            <FormElement
+              title={"Verfied"}
+              placeholder={user.status === 0 ? "Not Verified" : "Admin"}
+              name={"status"}
+            />
           </tbody>
         </table>
         <Button

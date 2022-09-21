@@ -1,9 +1,7 @@
-import { Link } from "react-router-dom";
-
-import EditUserDetail from "./EditUserDetails";
+import { deleteUser } from "../../Service/AdminService";
 
 const UserDetails = ({ user, setUserDeatils }) => {
-  const { fname, lname, email, dob, uid } = user;
+  const { fname, lname, email, dob, uid, gender, role, status } = user;
   return (
     <>
       <tr>
@@ -15,12 +13,16 @@ const UserDetails = ({ user, setUserDeatils }) => {
           <button
             className="btn btn-success"
             onClick={() => {
+              console.log(user);
               setUserDeatils({
                 fname,
                 lname,
                 email,
                 dob,
                 uid,
+                gender,
+                role,
+                status,
               });
             }}
           >
@@ -32,6 +34,7 @@ const UserDetails = ({ user, setUserDeatils }) => {
             className="btn btn-danger"
             onClick={() => {
               console.log(uid);
+              deleteUser(uid);
             }}
           >
             Delete

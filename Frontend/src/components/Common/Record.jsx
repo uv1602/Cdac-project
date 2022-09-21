@@ -1,7 +1,12 @@
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import styles from "../Dashboard/Charts/Income.module.scss";
+import { Button } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { deleteExpense } from "../../Service/ExpenseService";
+import React, { useState } from "react";
+import Moment from "react-moment";
 
-const Act = ({ content, income }) => {
+const Act = ({ content, income, eid, date }) => {
   const ArrowRight = () => {
     return (
       <div className={styles.icon} style={{ background: `rgb(42, 170, 85)` }}>
@@ -18,17 +23,49 @@ const Act = ({ content, income }) => {
     );
   };
 
+  const [vis, setVis] = useState(true);
+
   return (
-    <div className={styles.activity}>
-      {income >= 0 ? <ArrowRight /> : <ArrowLeft />}
-      <div className={styles.content}>
-        <span>{content}</span>
-        <span
-          className={`${styles.income} ${
-            income >= 0 ? styles.income_green : undefined
-          }`}
-        >{`$${income}`}</span>
-      </div>
+    <div>
+      {vis && (
+        <>
+          <div className="row">
+            <div className={styles.activity}>
+              <div className={styles.content}>
+                <div className="col-2">
+                  {income >= 0 ? <ArrowRight /> : <ArrowLeft />}
+                </div>
+                <div className="col-5">
+                  <span>{content}</span>
+                </div>
+                {/* <div className="col-2">{date.substr(0, 10)}</div> */}
+                <div>
+                  {" "}
+                  <Moment date={date} format="YYYY-MMM-DD" />
+                </div>
+                <span>{`$${income}`}</span>
+                <span
+                  className={`${styles.income} ${
+                    income >= 0 ? styles.income_green : undefined
+                  }`}
+                >
+                  <Button
+                    variant="outlined"
+                    startIcon={<DeleteIcon />}
+                    onClick={() => {
+                      deleteExpense(eid);
+                      setVis(false);
+                    }}
+                    color="warning"
+                  >
+                    Delete
+                  </Button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

@@ -16,10 +16,10 @@ const ShowRecord = () => {
   return (
     <main>
       <Header
-        message="Display Tranx Record"
+        message="Display Transaction Record"
         ficon={<Icon icon="fontisto:eye" />}
       />
-      {}
+
       <div className={styles.box}>
         <div className="row ">
           <div className="col-4">
@@ -42,6 +42,7 @@ const ShowRecord = () => {
           </div>
         </div>
       </div>
+
       <div className={styles.box}>
         {allExpense.length === 0 ? (
           <Record />
@@ -49,7 +50,12 @@ const ShowRecord = () => {
           allExpense.map((t, key) => {
             return (
               <div className="m-3" name={key}>
-                <Record income={t.amount} content={t.cat_name} />
+                <Record
+                  income={t.amount}
+                  content={t.cat_name}
+                  eid={t.eid}
+                  date={t.date}
+                />
               </div>
             );
           })

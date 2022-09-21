@@ -63,4 +63,24 @@ const categories = (setYesterday) => {
     });
 };
 
-export { expense, show, todayExpense, yesterdayExpense, categories };
+const deleteExpense = (eid) => {
+  let url = "/delete/" + eid;
+  console.log(url);
+  http
+    .remove(url)
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export {
+  expense,
+  show,
+  todayExpense,
+  yesterdayExpense,
+  categories,
+  deleteExpense,
+};

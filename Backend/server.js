@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const userRouter = require("./users");
 const expenseRouter = require("./Expense");
-
+const adminRouter = require("./admin");
 // create instance
 const app = express();
 app.options("*", cors());
@@ -43,6 +43,7 @@ app.use((request, response, next) => {
 
 app.use(userRouter);
 app.use(expenseRouter);
+app.use(adminRouter);
 
 app.get("/", (req, res) => {
   console.log("get method");

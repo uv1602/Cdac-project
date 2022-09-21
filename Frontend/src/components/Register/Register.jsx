@@ -50,13 +50,6 @@ const Signup = () => {
           <Input placeholder="Enter Your Password" name="password" />
           <Input placeholder="Enter Your Confirm Password" name="cpassword" />
           <input type="date" name="dob" />
-          {/* <span style={{ marginTop: "20px" }}>
-            <p> Gender :</p>
-            <input type="radio" value="Male" name="gender" /> Male
-            <input type="radio" value="Female" name="gender" /> Female
-            <input type="radio" value="Other" name="gender" /> Other
-          </span> */}
-
           <RadioMaterial name="gender" />
           <input type="submit" value="Register" />
           <span>

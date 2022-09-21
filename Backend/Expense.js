@@ -150,4 +150,31 @@ app.get("/api/show/categories", (req, res) => {
   }
 });
 
+app.delete("/api/delete/:eid", (req, res) => {
+  const { eid } = req.params;
+  const id = req.userID;
+  try {
+    db.execute(
+      `delete from expense where uid=${id} and eid =${eid} ;`,
+      (err, data) => {
+        const result = { status: "" };
+        if (err != null) {
+          result["status"] = "error";
+          result["error"] = err;
+        } else {
+          if (data.length == 0) {
+            result["status"] = "error";
+            result["error"] = "Expense not found";
+          } else {
+            result["status"] = "success";
+            result["result"] = "Expense is deleted successfully";
+          }
+        }
+        res.send(result);
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
+});
 module.exports = app;
