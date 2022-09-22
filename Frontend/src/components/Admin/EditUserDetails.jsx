@@ -2,8 +2,11 @@ import styles from "../Team/Team.module.scss";
 import FormElement from "./../MyProfile/FormElement";
 import Button from "../Common/Button";
 import People1 from "../../pics/people1.jpg";
+import { useState } from "react";
+import EditForm from "./EditForm";
 
 const Card = ({ person_image, user, setUserDeatils }) => {
+  const [open, setOpen] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { fname, lname, gender, dob, email } = e.target;
@@ -67,6 +70,20 @@ const Card = ({ person_image, user, setUserDeatils }) => {
             />
           </tbody>
         </table>
+
+        <EditForm
+          open={open}
+          handleOpen={() => {
+            setOpen(false);
+          }}
+        />
+        <Button
+          colour={1}
+          body="Back"
+          handleClick={() => {
+            setOpen(true);
+          }}
+        />
         <Button
           colour={1}
           body="Back"

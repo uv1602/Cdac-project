@@ -5,6 +5,9 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { deleteExpense } from "../../Service/ExpenseService";
 import React, { useState } from "react";
 import Moment from "react-moment";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+import Stack from "@mui/material/Stack";
 
 const Act = ({ content, income, eid, date }) => {
   const ArrowRight = () => {
@@ -38,11 +41,12 @@ const Act = ({ content, income, eid, date }) => {
                 <div className="col-5">
                   <span>{content}</span>
                 </div>
-                {/* <div className="col-2">{date.substr(0, 10)}</div> */}
+
                 <div>
                   {" "}
-                  <Moment date={date} format="YYYY-MMM-DD" />
+                  {date && <Moment date={date} format="YYYY-MMM-DD" />}
                 </div>
+                {console.log(date)}
                 <span>{`$${income}`}</span>
                 <span
                   className={`${styles.income} ${
@@ -54,6 +58,7 @@ const Act = ({ content, income, eid, date }) => {
                     startIcon={<DeleteIcon />}
                     onClick={() => {
                       deleteExpense(eid);
+                      console.log(eid);
                       setVis(false);
                     }}
                     color="warning"

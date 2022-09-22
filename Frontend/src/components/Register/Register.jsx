@@ -5,8 +5,6 @@ import styles from "./Register.module.scss";
 import People1 from "../../pics/people1.jpg";
 import React, { useState } from "react";
 import RadioMaterial from "../Common/RadioMUI";
-import I from "@mui/material/Input";
-import TextField from "../Common/TextField";
 const Signup = () => {
   const [error, setError] = useState("");
 
